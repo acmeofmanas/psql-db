@@ -1,2 +1,5 @@
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo update
+
+#when you want to install in ur specific namespace 
+ helm install psql-postgres bitnami/postgresql --set persistence.existingClaim=psql-pv-claim --set volumePermissions.enabled=true -n postgres --create-namespace
