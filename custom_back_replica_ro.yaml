@@ -1,0 +1,10 @@
+postgresql:
+  conf:
+    wal_level: logical
+    max_replication_slots: 10
+    max_wal_senders: 10
+
+  pgHbaConfiguration: |
+    host all all 0.0.0.0/0 md5
+    host replication replica_user 0.0.0.0/0 md5
+

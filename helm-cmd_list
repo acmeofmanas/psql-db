@@ -3,3 +3,5 @@ helm repo update
 
 #when you want to install in ur specific namespace 
  helm install psql-postgres bitnami/postgresql --set persistence.existingClaim=psql-pv-claim --set volumePermissions.enabled=true -n postgres --create-namespace
+helm upgrade psql-postgres-pub bitnami/postgresql -n test-pub  --set primary.configuration=wal_level=logical  --reuse-values 
+helm install psql-postgres-pub bitnami/postgresql --set persistence.existingClaim=psql-pv-claim --set volumePermissions.enabled=true -n test-sub --create-namespace  --set auth.username=root --set auth.password=root123 --set auth.postgresPassword=root123 --set auth.database=postgres --set primary.configuration=wal_level=logical
